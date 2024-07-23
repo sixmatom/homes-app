@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import {HomeComponent} from "./home/home.component";
-import {RouterModule} from "@angular/router";
+import { HomeComponent } from "./home/home.component";
+import { Router, RouterModule } from "@angular/router";
+
 @Component({
   standalone: true,
   selector: 'app-root',
   template: `
     <main>
-      <header class="brand-name">
+      <header class="brand-name" (click)="goHome()">
         <img class="brand-logo" src="/assets/logo.svg"
              alt="logo" aria-hidden="true">
       </header>
@@ -21,4 +22,10 @@ import {RouterModule} from "@angular/router";
 })
 export class AppComponent {
   title = 'homes';
+
+  constructor(private router: Router) {}
+
+  goHome() {
+    this.router.navigate(['/']); // Adjust the route if needed
+  }
 }
